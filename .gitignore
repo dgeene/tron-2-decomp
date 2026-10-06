@@ -1,0 +1,17 @@
+/local/
+/.tools/
+/build/
+/result
+/result-*
+/.direnv/
+/.env
+__pycache__/
+*.pyc
+*.gpr
+*.rep/
+*.exe
+*.dll
+*.rez
+*.REZ
+*.lto
+*.fxd
