@@ -7,6 +7,8 @@ behavioral reference. This workspace is not yet a playable port.
 Start with [the milestone plan](docs/MILESTONES.md) and
 [the initial findings](docs/BASELINE.md).
 Existing source and SDK research leads are recorded in [sources](docs/SOURCES.md).
+The next milestone's [interface map](docs/INTERFACES.md) and
+[Proton trace results](docs/RUNTIME_TRACING.md) are now available.
 
 ## Development environment
 
@@ -24,6 +26,8 @@ nix --extra-experimental-features 'nix-command flakes' develop ./nix
 
 # Add Ghidra and radare2 (larger first download):
 ./scripts/nix.sh develop ./nix#analysis
+# The prompt now reads [tron:analysis]. Launch the GUI explicitly:
+ghidra
 ```
 
 The default shell includes a C++ compiler, CMake, Ninja, GDB, binutils,

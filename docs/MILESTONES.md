@@ -1,6 +1,6 @@
 # Implementation milestones
 
-Updated: 2026-10-05. Target agreed with owner: native Linux first, Windows next.
+Updated: 2026-10-07. Target agreed with owner: native Linux first, Windows next.
 
 ## Objective and completion criteria
 
@@ -32,28 +32,31 @@ the exact binary analysis projects without guessing paths or versions.
 - [x] Catalog all eight installed REZ layers, including the backup.
 - [x] Extract seven PE module candidates into separate, hash-identified local directories
       and verify each byte range and PE header.
-- [ ] Confirm module discovery beyond the initial executable-extension candidate search.
-- [ ] Analyze the engine and game modules; distinguish imports, exports, thunks,
-      library routines, and game-specific code.
-- [ ] Confirm archive precedence and actual module loads under Proton using
-      traces; `launchcmds.txt` alone is not proof of precedence.
-- [ ] Map startup, engine interfaces, game-shell entry points, class registration,
-      resource lookup, and frame timing in `docs/` with addresses and confidence.
-- [ ] Compare available mod/backed-up module variants. Treat the backups as
-      candidates, not as a verified clean Steam release.
+- [x] Check the header of every resource, independent of filename extension.
+- [x] Analyze engine, client, object, and effects modules; record imports,
+      exports, thunks, and automatic function catalogs separately.
+- [x] Verify early client/resource DLL loading in isolated Proton traces.
+- [x] Verify duplicate client-shell archive precedence by reversing archive order.
+- [x] Map startup, interface registration, class/effect registration, resource
+      lookup, and frame-dispatch anchors with addresses and confidence.
+- [x] Compare client-shell variants and installed/backed-up PE sections. Backups
+      remain candidates, not a verified clean Steam release.
+- [ ] Resolve virtual-display OpenGL initialization; trace effects/object loading
+      and actual frame timing after successful graphics initialization.
 - [ ] Investigate officially released SDK headers/tools and document their
       provenance and permitted use before adopting any code.
-- [ ] Evaluate the existing LithTech source candidate in `docs/SOURCES.md` for
-      version matches and reusable interface knowledge before extensive recovery.
+- [x] Evaluate the existing LithTech source candidate at a pinned revision.
+      Installed client/server shell version 3 differs from candidate version 4;
+      installed ILTClient version 600 differs from candidate version 404.
 
 Exit: an evidence-backed module map and one selected, understood subsystem to
 recover. Extend archive support only when actual files require it.
 
 ## M2 — First recovered subsystem in C++
 
-- [ ] Select a small leaf subsystem from binary evidence (resource name lookup,
-      archive overlay resolution, or a deterministic math routine).
-- [ ] Record binary hash, RVA, signature hypotheses, callers, and edge cases.
+- [x] Select resource-name normalization, engine VA `0x004c46e0` / RVA `0xc46e0`.
+- [x] Record binary hash, signature hypotheses, caller, and edge cases in
+      `docs/INTERFACES.md`.
 - [ ] Recover readable C++, explain each inferred type, and create independent
       behavioral fixtures from the reference implementation where practical.
 - [ ] Differentially verify normal and boundary cases against the original.
@@ -113,10 +116,18 @@ never merge addresses from different module versions without an explicit mapping
 When finishing a session, update the checklist, concrete results, unresolved
 questions, and the next action. No recovered game function is verified yet.
 
-Current handoff: **M0 complete; M1 in progress.** Build and fixture tests passed;
-33 installed artifacts were fingerprinted, 19,713 layered resource entries were
-cataloged, and seven PE variants were extracted. The engine analysis identified
-6,372 functions and exported 25/25 selected pseudocode samples. See the baseline
-for limitations. The Killer App client analysis identified 11,691 functions and
-exported 25/25 samples. Next: map `SetMasterDatabase` registration
-and analyze the object/effects modules, then verify actual loads under Proton.
+Current handoff: **M0 complete; M1 mapping delivered, runtime follow-up remains.**
+Read `docs/INTERFACES.md` and `docs/RUNTIME_TRACING.md` for the 2026-10-07 results.
+Object/effects analyses completed (14,300 and 735 automatic functions); both
+exported 40/40 initial samples. Interface evidence is exported read-only, with
+explicit temporary definitions for missed vtable targets. All-resource discovery
+and its synthetic regression test passed. The interactive Nix shell now shows
+`[tron:analysis]` and launch guidance.
+
+Three archive-order configurations confirmed client-shell selection by complete
+hash and Wine load logs. The virtual display failed OpenGL initialization even
+with a software-rendering request, so effects/object runtime loads and gameplay
+timing remain unverified. Next independent work: implement and differentially
+test resource-name normalization for M2; pursue a working reference graphics
+context separately. Candidate-source provenance remains unresolved; none is
+compiled into the project. No recovered C++ game function is verified yet.

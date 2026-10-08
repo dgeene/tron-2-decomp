@@ -1,0 +1,81 @@
+{
+  "repository": "https://github.com/jsj2008/lithtech",
+  "revision": "0eab18289bed72879eddb648d3311075b108cf46",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "8efec9c79053a3f9ef19204d601d96d0137e5becd819fe173ce311877e52e6fb",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/README.md"
+    },
+    {
+      "path": "sdk/inc/ltmodule.h",
+      "sha256": "898c103176f6284988b36802b7065a97941fb9744b3e3165309b8aa3183f5ea5",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/sdk/inc/ltmodule.h"
+    },
+    {
+      "path": "sdk/inc/ltmodule.cpp",
+      "sha256": "451c66b46c7bd1c5ae7ba0c335d86cb993d2381ed927d65be2f579181e7f1350",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/sdk/inc/ltmodule.cpp"
+    },
+    {
+      "path": "sdk/inc/iclientshell.h",
+      "sha256": "8f9ee36d58d68badd28c3b36e4849f4f276bbf4979ca8fc0e23ec8d4e9af1b3e",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/sdk/inc/iclientshell.h"
+    },
+    {
+      "path": "runtime/shared/src/interface_linkage.cpp",
+      "sha256": "3b5774bbc94c79c47a8a708382f943f993f7a3729af15b9bcf1e5a30ed3cc8ed",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/runtime/shared/src/interface_linkage.cpp"
+    },
+    {
+      "path": "runtime/kernel/src/sys/win/bindmgr.cpp",
+      "sha256": "670e6d26921cc41ee3a7fc470b38b6cebfd579ba6bb621ed1e4eaac07a92fe99",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/runtime/kernel/src/sys/win/bindmgr.cpp"
+    },
+    {
+      "path": "runtime/client/src/clientmgr.cpp",
+      "sha256": "2a22c800265ab15930bce615d07eb668269ede86f560fed74bf3088951468d6c",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/runtime/client/src/clientmgr.cpp"
+    },
+    {
+      "path": "runtime/client/src/client_filemgr.cpp",
+      "sha256": "f00dda9b2129dd805b3e783ed37c82b8f9b1cfcd7860dd07a9b7f82dbc89cb94",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/runtime/client/src/client_filemgr.cpp"
+    },
+    {
+      "path": "NOLF2/ClientShellDLL/TRON/TronGameClientShell.cpp",
+      "sha256": "0c3d18254d85b834a750e7167c35148ad642e63a75308f13e25c1064f8a1b423",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/NOLF2/ClientShellDLL/TRON/TronGameClientShell.cpp"
+    },
+    {
+      "path": "NOLF2/ClientShellDLL/TRON/GlobalsInit.cpp",
+      "sha256": "5a49c399bf8759bc1f0f18e3ea5da6782a631a631e45c85d43f18d5a8f5004b7",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/NOLF2/ClientShellDLL/TRON/GlobalsInit.cpp"
+    },
+    {
+      "path": "NOLF2/ObjectDLL/TRON/TronGameServerShell.cpp",
+      "sha256": "070674c22da793cfd9ec2adcc0a084061ea380175416bbeaea6d0fb3dc85f70f",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/NOLF2/ObjectDLL/TRON/TronGameServerShell.cpp"
+    },
+    {
+      "path": "NOLF2/Shared/TRON/TronVersionMgr.cpp",
+      "sha256": "b3bb65cbf6a20f858da99feecbf5e21c865134f9825d716b6cdbf39ade220ae7",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/NOLF2/Shared/TRON/TronVersionMgr.cpp"
+    },
+    {
+      "path": "sdk/inc/iltclient.h",
+      "sha256": "016a89740ea3de3179755bccf5f13850338508d764a87fd638b54a798983d2ad",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/sdk/inc/iltclient.h"
+    },
+    {
+      "path": "sdk/inc/iservershell.h",
+      "sha256": "e1360906ec1187e8fa220f377dd8eeaab7a4a7e09a0b9ea793ae9059ab2c8b1d",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/sdk/inc/iservershell.h"
+    },
+    {
+      "path": "sdk/inc/iltcsbase.h",
+      "sha256": "81329cec04d2975ec4e731abd6e775615643b3cb7c668760c024bc16e8c36982",
+      "url": "https://raw.githubusercontent.com/jsj2008/lithtech/0eab18289bed72879eddb648d3311075b108cf46/sdk/inc/iltcsbase.h"
+    }
+  ]
+}

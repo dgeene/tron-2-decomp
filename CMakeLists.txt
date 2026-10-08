@@ -15,4 +15,6 @@ if(BUILD_TESTING)
   find_package(Python3 REQUIRED COMPONENTS Interpreter)
   add_test(NAME reztool-fixtures COMMAND "${Python3_EXECUTABLE}"
     "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_reztool.py" "$<TARGET_FILE:reztool>")
+  add_test(NAME archive-discovery COMMAND "${Python3_EXECUTABLE}"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_catalog.py" "$<TARGET_FILE:reztool>")
 endif()

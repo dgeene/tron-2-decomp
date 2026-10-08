@@ -9,6 +9,13 @@ From the workspace root:
 export TRON_GAME_DIR='/home/anon/.local/share/Steam/steamapps/common/Tron 2.0'
 ```
 
+`nix develop` opens a terminal shell with the tools on `PATH`; it does not open
+a GUI. The shell now prints a welcome message and prefixes the prompt with
+`[tron:analysis]`. Run `ghidra` inside it to open the GUI. Use
+`echo "$TRON_DEV_SHELL"` and `command -v ghidra` to confirm the environment;
+`exit` returns to the outer shell. To launch directly from the outer shell:
+`./scripts/nix.sh develop ./nix#analysis -c ghidra`.
+
 `scripts/nix.sh` prefers an existing Nix installation. Without one, run
 `scripts/bootstrap-nix.sh`: it fetches the x86_64 Linux v012 release of
 [nix-portable](https://github.com/DavHau/nix-portable), checks the SHA-256 recorded
@@ -44,8 +51,8 @@ build/dev/reztool extract "$TRON_GAME_DIR/gamep5.rez" CSHELL.DLL local/modules/g
 python scripts/inventory.py local/modules --out local/reports/modules.json
 ```
 
-To catalog all installed archives and extract `.dll`, `.exe`, `.lto`, and `.fxd`
-members whose payload starts with `MZ`, run:
+To catalog all installed archives and extract members whose payload starts with
+`MZ`, regardless of filename extension, run:
 
 ```sh
 python scripts/catalog.py "$TRON_GAME_DIR"
@@ -55,9 +62,9 @@ python scripts/inventory.py local/catalog --out local/reports/modules.json
 This writes `local/catalog/archives.json`, per-archive TSV catalogs, and extracted
 modules in folders named with the source archive's hash. Every extract is checked
 against its source byte range, including on repeat runs. The subsequent PE
-inventory validates whether each candidate really parses as a PE image. This
-candidate search is extension-based, not a proof that no other resource embeds
-executable code. Do not put the output directory inside the Steam installation.
+inventory validates ordinary executable extensions; unusual extensions require
+explicit PE inspection. The candidate scan checks resource starts, not embedded
+code at arbitrary offsets. Do not put the output directory inside the Steam installation.
 
 Do not run the extraction command again over an existing file. Check its hash
 and use the existing extract, or choose a new output directory. Inventory reports
@@ -100,6 +107,10 @@ Review warnings and per-function status even if the wrapper succeeds. Do not
 equate Ghidra's auto-generated function count with total original functions or
 percent completion. Automatic names/types are hypotheses.
 
+For targeted disassembly, string references, and interface evidence, use
+`scripts/interfaces.sh` as described in [the M1 interface map](INTERFACES.md).
+For controlled reference runs, see [isolated Proton tracing](RUNTIME_TRACING.md).
+
 This follows Ghidra's official [headless workflow](https://github.com/NationalSecurityAgency/ghidra/blob/master/Ghidra/RuntimeScripts/support/analyzeHeadlessREADME.md)
 and [decompiler API](https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html).
 
@@ -125,7 +136,7 @@ Dynamic tracing has not been configured by this initial scaffold.
 
 ## Future Git repository
 
-This session does not initialize a repository. Before the first commit, review
+The workspace is now a Git repository. Before each commit, review
 the staged file list: include authored code, scripts, lockfiles, and notes;
 exclude `local/`, `.tools/`, `build/`, binaries, assets, and raw decompiler output.
 No license has yet been selected for newly authored project code.

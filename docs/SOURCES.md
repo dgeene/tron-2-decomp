@@ -1,8 +1,9 @@
 # Research leads and provenance
 
-Checked 2026-10-05. The current archive reader was written from observations of
-the local files. No game or engine source from the following leads has been
-copied into this workspace.
+Updated 2026-10-07. The archive reader was written from observations of local
+files. Selected candidate-source files are now saved in ignored
+`local/references/` for comparison; none is compiled into the project or copied
+into the authored C++ source tree.
 
 ## Existing LithTech source candidate
 
@@ -13,11 +14,20 @@ cross-platform support as unfinished work. This is a useful lead to investigate
 before reconstructing large interfaces from scratch; it is not evidence that
 the repository matches the installed binaries or is a finished native port.
 
-Next steps: inspect the repository's provenance and per-component notices,
-identify the TRON-specific version, and compare interface names, layouts,
-constants, and representative functions against the hash-identified modules.
-Record any files actually used and their exact revision. Do not infer an
-engine-wide or game-wide license from the README's tentative description.
+The inspected revision is `0eab18289bed72879eddb648d3311075b108cf46`; 15 selected
+files and their hashes are pinned in [the reference manifest](references/lithtech.json).
+Run `python scripts/fetch-references.py` in the Nix shell to reproduce this local
+reference set. TRON-specific files occur under `NOLF2/*/TRON/`.
+
+The database registration mechanism matches several binary structures and
+control-flow patterns, but the installed interface versions differ: client/server
+shells are version 3 versus the candidate's version 4, and ILTClient is 600 versus
+404. See [the interface evidence](INTERFACES.md). These are direct reasons to
+avoid importing the candidate's ABI unchanged.
+
+The README's tentative release/license claim is not independently established;
+the inspected tree has no root `LICENSE` or `COPYING` file. Component notices
+and original release provenance still need review before source adoption.
 
 If matching source is useful, keep the original goal: an understandable native
 Linux C++ implementation with independently checked behavior. Source-assisted

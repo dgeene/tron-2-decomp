@@ -26,7 +26,7 @@ def main():
     if output.is_relative_to(root):
         parser.error("output must be outside the source installation")
     output.mkdir(parents=True, exist_ok=True)
-    report = {"schema_version": 1, "archives": []}
+    report = {"schema_version": 2, "discovery": "MZ header at the start of every resource", "archives": []}
     archives = sorted(p for p in root.rglob("*")
                       if p.is_file() and not p.is_symlink() and p.suffix.lower() == ".rez")
     for archive in archives:
@@ -44,8 +44,6 @@ def main():
         with archive.open("rb") as stream:
             for entry in entries:
                 member = Path(entry["path"])
-                if member.suffix.lower() not in {".dll", ".exe", ".lto", ".fxd"}:
-                    continue
                 if member.is_absolute() or ".." in member.parts:
                     raise ValueError(f"Unsafe archive member: {member}")
                 offset, size = int(entry["offset"]), int(entry["size"])

@@ -1,5 +1,8 @@
 # Installation baseline
 
+This is the initial 2026-10-05 baseline. For the 2026-10-07 follow-up, see
+[the interface map](INTERFACES.md) and [runtime tracing](RUNTIME_TRACING.md).
+
 Observed on 2026-10-05. Input directory:
 `/home/anon/.local/share/Steam/steamapps/common/Tron 2.0`.
 All installation access during this milestone was read only. No game process
